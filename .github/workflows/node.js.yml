@@ -36,6 +36,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: echo $GITHUB_WORKSPACE
     - run: ls -la
+    - run: cat ci-code/src/test-node.sh
     - run: sudo ci-code/src/test-node.sh
 #     - run: npm run test-arrow
 #     - run: npm run test-callback
