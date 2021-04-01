@@ -1,14 +1,13 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Node.js CI Test
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 
 jobs:
   # First job (will run in parralel with 2nd Job)
@@ -27,20 +26,19 @@ jobs:
 
   # Second job
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x]
-#         node-version: [10.x, 12.x, 14.x, 15.x]
+        # node-version: [10.x, 12.x, 14.x, 15.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
+    # Checkout our nodejs-practice code
     - uses: actions/checkout@v2
       with:
         path: my-node-code
-    - name: Checkout tools repo
+    # Checkout our tool code (ci-code for example)
+    - name: Checkout my tools repo
       uses: actions/checkout@v2
       with:
         repository: leojrbk/ci-code
@@ -52,12 +50,16 @@ jobs:
     - run: echo $GITHUB_WORKSPACE
     - run: ls -la
     - run: cat ci-code/src/test-node.sh
+    
+    # Run the tool code
     - run: sudo chmod +x ci-code/src/test-node.sh
     - run: sudo ci-code/src/test-node.sh
-#     - run: npm run test-arrow
-#     - run: npm run test-callback
-#     - run: npm run build --if-present
 
-#     - uses: actions/javascript-action@v1
-#       with:
-#         milliseconds: 1000
+    # Collect all build steps into ci-code/src/test-node.sh (our repo for build)
+    # - run: npm run test-arrow
+    # - run: npm run test-callback
+    # - run: npm run build --if-present
+
+    # - uses: actions/javascript-action@v1
+    #   with:
+    #     milliseconds: 1000
