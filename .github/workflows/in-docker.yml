@@ -19,6 +19,7 @@ on:
   workflow_dispatch:
 jobs:
   my_job_in_docker:
+    runs-on: ubuntu-18.04 # linux required if you want to use docker
     container: node:10.16-jessie
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
