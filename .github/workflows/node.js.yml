@@ -25,6 +25,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm test-arrow
-    - run: npm test-callback
+    - run: npm run test-arrow
+    - run: npm run test-callback
     - run: npm run build --if-present
