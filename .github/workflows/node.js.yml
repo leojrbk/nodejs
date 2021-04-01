@@ -9,6 +9,7 @@ on:
   pull_request:
     branches: [ main ]
 
+
 jobs:
   build:
 
@@ -21,6 +22,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Checkout tools repo
+      uses: actions/checkout@v2
+      with:
+        repository: leojrbk/ci-code
+        path: ci-code
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
