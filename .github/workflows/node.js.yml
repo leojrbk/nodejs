@@ -11,6 +11,21 @@ on:
 
 
 jobs:
+  # First job (will run in parralel with 2nd Job)
+  weekday_job:
+    runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: Mon
+    steps:
+      - name: "Hello world when it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
+        run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
+
+  # Second job
   build:
 
     runs-on: ubuntu-latest
@@ -46,35 +61,3 @@ jobs:
 #     - uses: actions/javascript-action@v1
 #       with:
 #         milliseconds: 1000
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
