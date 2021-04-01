@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-arrow": "node playground/3-arrow-chalenge.js",
+    "test-callback": "node playground/4-callback.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leojrbk/nodejs-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leojrbk/nodejs-practice/issues"
+  },
+  "homepage": "https://github.com/leojrbk/nodejs-practice#readme"
+}
