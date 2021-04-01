@@ -1,0 +1,29 @@
+name: Workflow 3 (Test)
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    # Sequence of patterns matched against refs/tags
+    tags:        
+      - v1             # Push events to v1 tag
+      - v1.*           # Push events to v1.0, v1.1, and v1.9 tags
+  pull_request:
+    branches: [ main ]
+    # Sequence of patterns matched against refs/tags
+    tags:        
+      - v1             # Push events to v1 tag
+      - v1.*           # Push events to v1.0, v1.1, and v1.9 tags
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  my_job_in_docker:
+    container: node:10.16-jessie
+  steps:
+  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  - uses: actions/checkout@v2
+
+  # Runs a single command using the runners shell
+  - name: Run a one-line script
+    run: echo Hello, world!
