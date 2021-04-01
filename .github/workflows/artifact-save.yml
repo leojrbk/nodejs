@@ -18,15 +18,14 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-  # Storing workflow data as artifacts
-  steps:
-    - uses: actions/checkout@v2
+    # Storing workflow data as artifacts
+    steps:
+      - uses: actions/checkout@v2
+      - run: mkdir -p path/to/artifact
 
-    - run: mkdir -p path/to/artifact
+      - run: echo hello > path/to/artifact/world.txt
 
-    - run: echo hello > path/to/artifact/world.txt
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: path/to/artifact/world.txt
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: path/to/artifact/world.txt
