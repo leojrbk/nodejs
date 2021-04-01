@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-      path: my-node-code
+        path: my-node-code
     - name: Checkout tools repo
       uses: actions/checkout@v2
       with:
