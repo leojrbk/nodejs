@@ -33,6 +33,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: echo $GITHUB_WORKSPACE
+    - run: ls -la
     - run: npm run test-arrow
     - run: npm run test-callback
     - run: npm run build --if-present
